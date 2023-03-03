@@ -32,22 +32,23 @@ cargo run --features bevy_auto_sys/auto-sys
 smartly construct a query based on where and how it's used. Below are a few scenarios:
 |context|param|context out|
 |-|-|-|
-|`query![Transform]`| `query_transform:Query<&Transform>`| `query_transform` |
-|`for transform in query![Transform]`| `query_transform:Query<&Transform>`| `query_transform.iter()` |
-|`for mut transform in query![Transform]`| `mut query_transform:Query<&mut Transform>`| `query_transform.iter_mut()` |
+|query![Transform]|query_transform:Query<&Transform>|query_transform|
+|for transform in query![Transform]|query_transform:Query<&Transform>|query_transform.iter()|
+|for mut transform in query![Transform]|mut query_transform:Query<&mut Transform>|query_transform.iter_mut()|
+
 Currently the query syntax is very basic only supporting the `With<T>` filter. The table below outlines the syntax
 
 |context|query|
 |-|-|
-|`query![Transform]`|`Query<&Transform>`|
-|`query![Transform Sprite]`|`Query<(&Transform,&Sprite)>`|
-|`query![Transform and Sprite]`|`Query<(&Transform,&Sprite)>`|
-|`query![Transform, Sprite]`|`ERROR`|
-|`query![Transform with Sprite]`|`Query<&Transform,With<Sprite>>`|
-|`query![Transform Texture with Sprite]`|`Query<(&Transform,&Texture),With<Sprite>>`|
-|`query![Transform Texture with Sprite and Visibility]`|`Query<(&Transform,&Texture),With<(Sprite,Visibility)>>`|
-|`query![Transform Texture with Sprite with Visibility]`|`Query<(&Transform,&Texture),With<(Sprite,Visibility)>>`|
-|`query![Transform Texture with Sprite Visibility]`|`Error`|
+|query![Transform]|Query<&Transform>|
+|query![Transform Sprite]|Query<(&Transform,&Sprite)>|
+|query![Transform and Sprite]|Query<(&Transform,&Sprite)>|
+|query![Transform, Sprite]|ERROR|
+|query![Transform with Sprite]|Query<&Transform,With<Sprite>>|
+|query![Transform Texture with Sprite]|Query<(&Transform,&Texture),With<Sprite>>|
+|query![Transform Texture with Sprite and Visibility]|Query<(&Transform,&Texture),With<(Sprite,Visibility)>>|
+|query![Transform Texture with Sprite with Visibility]|Query<(&Transform,&Texture),With<(Sprite,Visibility)>>|
+|query![Transform Texture with Sprite Visibility]|Error|
 ### `spawn!(x)`
 shorthand for `commands.spawn(x)`, also imports `mut command:Commands`. Currently there is a type completion problem inside of the spawn! macro
 ### `load!(x)`
