@@ -36,6 +36,7 @@ smartly construct a query based on where and how it's used. Below are a few scen
 |`for transform in query![Transform]`| `query_transform:Query<&Transform>`| `query_transform.iter()` |
 |`for mut transform in query![Transform]`| `mut query_transform:Query<&mut Transform>`| `query_transform.iter_mut()` |
 Currently the query syntax is very basic only supporting the `With<T>` filter. The table below outlines the syntax
+
 |context|query|
 |-|-|
 |`query![Transform]`|`Query<&Transform>`|
